@@ -1,0 +1,165 @@
+/* Reset + Modern defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Main container */
+.container {
+  font-family: "Calibri", Arial, sans-serif;
+  font-size: 11pt;   /* Word default small size */
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  background:#fff ;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden; /* keeps things clean */
+  word-wrap: break-word;
+}
+
+/* Header */
+  header {display:flex;
+  color: black;               /* text color (better contrast on light bg) */
+  background-color: teal; /* changed from gray */
+  padding: 20px;
+  border-bottom: 2px solid teal; /* optional: makes it look professional */
+}
+
+
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
+
+.header-bio {
+  flex: 1;
+  margin-left: 20px;
+    padding:10px;
+}
+
+.header-bio h1 {
+  font-size: 1.8rem;
+}
+
+.header-bio h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.header-contact {
+  float: right;
+padding:20px
+}
+
+.header-contact a {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.header-contact a:hover {
+  text-decoration: underline;
+}
+.container1{padding:20px}
+
+/* Section titles */
+.h2profile {
+  color: teal;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+/* Lists */
+.list, .list2 {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.list li {
+  margin: 5px 0;
+  color: white;
+}
+
+.list2 li {
+  margin: 5px 0;
+  color: #333;
+}
+
+/* Employment / Education layout */
+.degreeName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.date {
+  float: right;
+
+}
+
+.employ1{max-width: 650px;
+    word-wrap: break-word;
+    font-weight: bold;
+display: inline;
+}
+.position {
+color: cadetblue;
+  font-style: italic;
+}
+
+/* Footer */
+.bottom-container {
+  clear: both;
+  background: #34495e;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.bottom-container a {
+  color: #f1c40f;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.bottom-container a:hover {
+  text-decoration: underline;
+}
+
+/* HR Styling */
+hr.header-line {
+  border: none;
+  border-top: 2px solid #eee;
+  margin: 20px 0;
+}
+
+
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-bio {
+    margin: 30px 0;
+  }
+
+  .header-contact {
+    text-align: center;
+  }
+  .footer{text-align: right}

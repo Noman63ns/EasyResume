@@ -1,0 +1,184 @@
+*{
+margin: 0  ;
+padding: 0;
+}
+body{
+    background-color: aliceblue;
+    font-family: 'roboto','sans-serif';
+}
+/* Whole resume container */
+.container {
+    display: flex;                     /* side-by-side layout */
+    max-width: 900px;
+    margin: 30px auto;                 /* center the resume */
+    border: 2px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    word-wrap: break-word;   /* breaks long words */
+    white-space: normal;     /* allows text to wrap */
+    overflow-wrap: anywhere; /* extra safety for very long text */                  /* keeps borders neat */
+    font-family: Arial, sans-serif;
+}
+
+/* Left sidebar */
+.container1 {
+    width: 30%;
+    /*background: linear-gradient(180deg, #2c3e50, #34495e); /* dark gradient */
+    float:left;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Right content area */
+.container2 {
+    width: 70%;
+    float:right;
+    background-color: #f9f9f9;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Profile image */
+.profile-image img {
+    display: block;
+    margin: 0 auto 20px auto;         /* center the image */
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+}
+
+/* Header section */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-bio h2 {
+    margin: 10px 0 5px 0;
+    font-size: 22px;
+}
+
+.header-bio h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+    color: #ddd;
+}
+
+/* Section titles */
+h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+/* Personal info / skills list */
+.bio p, .list li, .list2 li {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.list, .list2 {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.list li::before, .list2 li::before {
+    content: "• ";
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Each profile block */
+.profile {
+    margin-bottom: 25px;
+}
+
+.h2profile {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #34495e;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.intership{
+padding:20px;
+}
+.extracurricular{
+padding:20px;
+
+}
+.research{
+padding:20px;
+}
+.employ1{
+text:bold;
+float:left}
+.degree {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.degreeName,.result  {
+  font-weight: bold;
+}
+
+.date {
+  margin-left: auto;   /* pushes date to far right */
+}
+
+.instituteName,
+.department,
+.result {
+  width: 100%;   /* force them onto new lines */
+}
+
+.interndate{float:left}
+.position{
+padding-left:20px;
+color:teal}
+.position2{
+text-align:center}
+.bottom-container{
+background-color:gray;
+text-align:center;
+padding:10px;}
+.bottom-container a{
+color:white;
+margin:20px;}
+.bottom-container p{
+color:white;
+text-align:center;
+padding:20px;}
+/* Force A4 page size */
+.date_em{float:right
+}
+.result{text-align: center
+}
+@page {
+  size: A4;
+  margin: 10mm;   /* adjust as needed */
+}
+
+@media print {
+  html, body {
+    width: 210mm;      /* A4 portrait width */
+    height: 297mm;     /* A4 portrait height */
+    margin: auto;
+  }
+
+  /* Scale down automatically if content is too wide */
+  body {
+    transform: scale(0.95);    /* shrink slightly */
+    transform-origin: top left;
+  }
+}
