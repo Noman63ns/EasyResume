@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="../static/form6.css">
+  <style>
+    .optional-section { display: none; margin-top: 10px; }
+    ul { margin-top: 5px; }
+  </style>
+</head>
+<body>
+ <div class="container">
+  <h1>Required Information</h1>
+  <form method="POST"  enctype="multipart/form-data">
+   <div class="row1">
+      <div class="col1">
+      <label>Container Color:</label>
+      <input type="color" name="container1_color" value="#4CAF50"></div>
+      <div class="col2"><label>Header color:</label>
+      <input type="color" name="header_color" value="#f9f9f9"></div>
+      <div class="col3"><label for="fontSize">Font Size:</label>
+    <input list="fontSizes" name="fontSize" id="fontSize" placeholder="Select font size">
+    <datalist id="fontSizes">
+        <option value="10pt">
+        <option value="11pt">
+        <option value="12pt">
+        <option value="14pt">
+        <option value="16pt">
+    </datalist></div>
+    </div>
+
+    <!-- Required Fields -->
+    <h3>Personal Information</h3><br>
+    <div class="ele">
+     <div class="left"><label class="photo-box">
+          <input type="file" name="photo" accept="image/*">
+          <div class="photo-placeholder">Click to add photo</div>
+        </label></div><br>
+    <div class="right"><label>Name:</label>
+    <input type="text" name="name" required><br><br>
+    <label>Designation:</label>
+    <input type="text" name="designation" required><br><br></div>
+    </div><br>
+    <div class="ep">
+    <div class="em"><label>Email:</label>
+    <input type="email" name="email" required><br><br></div>
+      <div class="ph"><label>Phone:</label>
+    <input type="text" name="phone" required><br><br></div>
+    </div>
+    <div class="ad">
+    <div class="addr"><label>Address:</label>
+    <input type="text" name="address" required><br><br></div>
+    <div class="dob"><label>Date of Birth:</label>
+    <input type="date" name="dob" required><br><br></div>
+    </div>
+    <div class="gn">
+     <div class="g"><label>Gender
+      <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      </label><br></div>
+       <div class="n"><label>Nationality:</label>
+          <input type="text" name="nationality" required><br><br></div>
+       </div>
+                 <!-- Skills Section -->
+    <div class="seh">
+    <div class="sk"><h5>Skills (Add one by one)</h5>
+    <input type="text" id="skillInput" placeholder="Enter a skill">
+    <button type="button" class="btn" onclick="addItem('skillInput','skillsList','skillsField')">Add Skill</button>
+    <ul id="skillsList"></ul>
+    <input type="hidden" name="skills" id="skillsField"></div><br>
+
+    <!-- language Section -->
+    <div class="lan"><h5>Language (Add one by one)</h5>
+    <input type="text" id="lanInput" placeholder="Enter language">
+    <button type="button" class="btn" onclick="addItem('lanInput','lanList','lanField')">Add Language</button>
+    <ul id="lanList"></ul>
+    <input type="hidden" name="language" id="lanField"></div><br>
+
+    <!-- hoobies Section -->
+    <div class="hb"><h5>Hobbies (Add one by one)</h5>
+    <input type="text" id="hobbyInput" placeholder="Enter hobbies">
+    <button type="button" class="btn" onclick="addItem('hobbyInput','hobbyList','hobbyField')">Add Hobbies</button>
+    <ul id="hobbyList"></ul>
+    <input type="hidden" name="hobbies" id="hobbyField"></div><br>
+    </div>
+    <label >Profile:</label><br>
+     <textarea name="profile" rows="5" cols="145" required></textarea><br><br>
+
+    <!-- Optional Sections -->
+    <h3>Optional Sections</h3>
+    <label>
+   <input type="checkbox" id="chkEducation" onchange="toggleSection('chkEducation','educationSection')"> Education
+    </label>
+    <div id="educationSection" class="optional-section">
+    <input type="text" id="degreeName" placeholder="Enter Degree Name">
+    <input type="text" id="dateedu" placeholder="Enter Date">
+    <input type="text" id="instituteName" placeholder="Enter Institute Name">
+    <input type="text" id="department" placeholder="Enter Department">
+    <input type="text" id="result" placeholder="Enter result">
+    <!-- FIX: call addItem with array of inputs -->
+    <button type="button" class="btn" onclick="addItem(['degreeName','dateedu','instituteName','department','result'],'educationList','educationField')">Add Education</button>
+
+    <ul id="educationList"></ul>
+    <input type="hidden" name="education" id="educationField">
+     </div><br>
+     <label>
+   <input type="checkbox" id="chkEmployment" onchange="toggleSection('chkEmployment','employmentSection')"> Employment
+   </label>
+      <div id="employmentSection" class="optional-section">
+          <input type="text" id="jobName" placeholder="Enter Job Name">
+          <input type="text" id="position" placeholder="Enter Position">
+          <input type="text" id="date" placeholder="Enter Date">
+          <!-- FIX: call addItem with array of inputs -->
+          <button type="button" class="btn" onclick="addItem(['jobName','position','date'],'employmentList','employmentField')">Add Employment</button>
+
+        <ul id="employmentList"></ul>
+         <input type="hidden" name="employment" id="employmentField">
+      </div><br>
+
+    <label>
+      <input type="checkbox" id="chkIntern" onchange="toggleSection('chkIntern','internSection')"> Internship
+    </label>
+    <div id="internSection" class="optional-section">
+      <input type="text" id="internInput" placeholder="Enter internship">
+      <button type="button" class="btn" onclick="addItem('internInput','internList','internField')">Add Internship</button>
+      <ul id="internList"></ul>
+      <input type="hidden" name="internship" id="internField">
+    </div><br>
+
+    <label>
+      <input type="checkbox" id="chkAchiev" onchange="toggleSection('chkAchiev','achievSection')"> Achievement
+    </label>
+    <div id="achievSection" class="optional-section">
+      <input type="text" id="achievInput" placeholder="Enter achievement">
+      <button type="button" class="btn" onclick="addItem('achievInput','achievList','achievField')">Add Achievement</button>
+      <ul id="achievList"></ul>
+      <input type="hidden" name="achievement" id="achievField">
+    </div><br>
+
+    <label>
+      <input type="checkbox" id="chkCourses" onchange="toggleSection('chkCourses','coursesSection')">  Courses
+    </label>
+    <div id="coursesSection" class="optional-section">
+      <input type="text" id="courInput" placeholder="Enter courses">
+      <button type="button" class="btn" onclick="addItem('courInput','courList','courField')">Add Courses</button>
+      <ul id="courList"></ul>
+      <input type="hidden" name="courses" id="courField">
+    </div><br>
+    <label>
+      <input type="checkbox" id="chkExtra" onchange="toggleSection('chkExtra','extraSection')"> Extra curricular Activities
+    </label>
+      <div id="extraSection" class="optional-section">
+      <input type="text" id="extraInput" placeholder="Enter Extra Curricular Activities">
+      <button type="button" class="btn" onclick="addItem('extraInput','extraList','extraField')">Add Extra Curricular Activities</button>
+      <ul id="extraList"></ul>
+      <input type="hidden" name="extra" id="extraField">
+      </div><br>
+
+    <label>
+      <input type="checkbox" id="chkQuality" onchange="toggleSection('chkQuality','qualitySection')"> Quality
+    </label>
+      <div id="qualitySection" class="optional-section">
+      <input type="text" id="qualityInput" placeholder="Enter Qualities">
+      <button type="button" class="btn" onclick="addItem('qualityInput','qualityList','qualityField')">Add Quality</button>
+      <ul id="qualityList"></ul>
+      <input type="hidden" name="quality" id="qualityField">
+      </div><br>
+    <label>
+      <input type="checkbox" id="chkResearch" onchange="toggleSection('chkResearch','researchSection')"> Research Work
+    </label>
+      <div id="researchSection" class="optional-section">
+      <input type="text" id="researchInput" placeholder="Enter Research Work">
+      <button type="button" class="btn" onclick="addItem('researchInput','researchList','researchField')">Add Research Work</button>
+      <ul id="researchList"></ul>
+      <input type="hidden" name="research" id="researchField">
+      </div><br>
+
+    <label>
+  <input type="checkbox" id="chkCustom" onchange="toggleSection('chkCustom','customSection')"> Add Custom Section
+  </label>
+
+   <div id="customSection" class="optional-section">
+  <!-- Section Title -->
+  <input type="text" id="sectionTitle" placeholder="Enter Section Title">
+  <button type="button" class="btn" onclick="addCustomSection()">Add Section</button>
+
+  <!-- Container for all custom sections -->
+  <div id="customSectionsContainer"></div>
+
+  <!-- Hidden field for backend -->
+  <input type="hidden" name="custom" id="customField">
+   </div>
+    <br>
+    <label>Facebook:</label>
+    <input type="url" name="facebook" placeholder="Enter Facebook URL"><br><br>
+      <label>Linkedin:</label>
+    <input type="url" name="linkedin" placeholder="Enter LinkedIn URL"><br><br>
+      <label>Github:</label>
+    <input type="url" name="github" placeholder="Enter Github URL"><br><br>
+
+    <button type="submit" class="btn">Generate Resume</button>
+  </form>
+
+ <script>
+  // Store all lists
+  let lists = {};
+
+  // General addItem function (works for 1 input OR multiple inputs)
+  function addItem(inputIds, listId, fieldId) {
+    if (typeof inputIds === "string") {
+      inputIds = [inputIds];
+    }
+
+    // Collect values
+    const values = inputIds.map(id => document.getElementById(id).value.trim());
+
+    // If all empty, stop
+    if (values.every(v => !v)) return;
+
+    // Format entry: join values with " | " and remove empty parts
+    const entry = values.filter(v => v).join(" | ");
+    if (!entry) return; // avoid empty <li>
+
+    // Clear inputs
+    inputIds.forEach(id => document.getElementById(id).value = "");
+
+    // Initialize list
+    if (!lists[listId]) {
+      lists[listId] = [];
+    }
+
+    lists[listId].push(entry);
+
+    // Update UI safely
+    const ul = document.getElementById(listId);
+    ul.innerHTML = "";
+    lists[listId].forEach(item => {
+      if (item.trim()) {
+        ul.innerHTML += `<li>${item}</li>`;
+      }
+    });
+
+    // Update hidden field
+    document.getElementById(fieldId).value = lists[listId]
+      .filter(i => i.trim())
+      .join("||");
+  }
+
+  // Show/hide optional sections
+  function toggleSection(chkId, sectionId) {
+    const chk = document.getElementById(chkId);
+    const section = document.getElementById(sectionId);
+    section.style.display = chk.checked ? "block" : "none";
+  }
+</script>
+  <script>
+      let customSections = [];
+
+function addCustomSection() {
+  const title = document.getElementById("sectionTitle").value.trim();
+  if (!title) return;
+
+  // Create new section object
+  const section = {
+    title: title,
+    items: []
+  };
+  customSections.push(section);
+
+  // Clear input
+  document.getElementById("sectionTitle").value = "";
+
+  renderCustomSections();
+}
+
+function addCustomItem(index) {
+  const itemTitle = document.getElementById(`itemTitle${index}`).value.trim();
+  const itemDesc = document.getElementById(`itemDesc${index}`).value.trim();
+
+  if (!itemTitle && !itemDesc) return;
+
+  customSections[index].items.push({
+    title: itemTitle,
+    description: itemDesc
+  });
+
+  // Clear inputs
+  document.getElementById(`itemTitle${index}`).value = "";
+  document.getElementById(`itemDesc${index}`).value = "";
+
+  renderCustomSections();
+}
+
+function renderCustomSections() {
+  const container = document.getElementById("customSectionsContainer");
+  container.innerHTML = "";
+
+  customSections.forEach((section, idx) => {
+    let html = `<div class="custom-block">
+                  <h3>${section.title}</h3>
+                  <ul>`;
+    section.items.forEach(it => {
+      html += `<li><strong>${it.title}</strong>: ${it.description}</li>`;
+    });
+    html += `</ul>
+             <input type="text" id="itemTitle${idx}" placeholder="Item Title">
+             <input type="text" id="itemDesc${idx}" placeholder="Item Description">
+             <button type="button" onclick="addCustomItem(${idx})">Add Item</button>
+             </div>`;
+    container.innerHTML += html;
+  });
+
+  // Save to hidden field
+  document.getElementById("customField").value = JSON.stringify(customSections);
+}
+
+</script>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+   <link rel="stylesheet" href="../static/resume3.css">
+</head>
+<body>
+  <div class="container" style="font-size: {{ font_size }};">
+     <div>
+        <header>
+               {% if photo_path %}
+                 <div class="profile-image">
+                     <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Photo"  >
+                 </div>
+               {% endif %}
+
+               <div class="header-contact">
+
+                        <h3> {{name}}</h3>
+                        <p class="custom-line">&#128386 {{email}}</p>
+                        <p class="custom-line">&#128382 {{phone}}</p>
+                        <p class="custom-line">&#127968 {{address}}</p>
+                        <p class="custom-line">&#x1F4C5 {{dob}}</p>
+                        <p class="custom-line">&#9893 {{gender}}</p>
+                        <p class="custom-line">&#x1F3F4 {{nationality}}</p>
+
+               </div>
+         </header>
+     </div>
+
+     <div class="container1">
+         <div class="profile">
+                  <h3 class="h2profile">Profile</h3>
+                  <hr>
+                  <p>{{profile}}</p><br>
+          </div>
+          {% if education %}
+              <div class="profile">
+                 <h3 class="h2profile"> Education</h3>
+                  <hr>
+                 <div class="extra">
+                    {% for degree in education %}
+                      <div class="degree">
+                         <div class="employ1">{{ degree.degreeName }}</div>
+                          <div class="date">{{ degree.dateedu }}</div>
+                         <div class="instituteName">{{ degree.instituteName }}</div>
+                         <div class="position">{{ degree.department }}</div>
+                         <div class="result"><p>CGPA/GPA:{{ degree.result }}</P></div>
+                      </div><br>
+
+                    {% endfor %}
+                 </div>
+              </div>
+            {% endif %}
+             {% if internship %}
+               <div class="profile">
+                   <h3 class="h2profile"> Internship</h3><hr>
+                    <div>
+                       {% for intern in internship %}
+                           <p>{{ intern }}</p>
+                       {% endfor %}
+                    </div><br>
+               </div>
+            {% endif %}
+            {% if extra  %}
+             <div class="profile">
+
+                   <h3 class="h2profile"> Extra Curricular Activities</h3><hr>
+                    <ul class="list2">
+                       {% for extra in extra  %}
+                           <li>{{ extra }}</li>
+                       {% endfor %}
+                    </ul>
+             </div><br>
+            {% endif %}
+            {% if research %}
+            <div class="profile">
+                <h3 class="h2profile"> Research Work</h3><hr>
+                    <div>
+                       {% for research in research %}
+                           <p>{{ research }}</p><br>
+                       {% endfor %}
+                    </div>
+            </div>
+            {% endif %}
+            {% if employment %}
+            <div class="profile">
+                <h3 class="h2profile">Employment</h3><hr>
+                <div class="extra">
+                   {% for job in employment %}
+                    <div class="job">
+                        <div class="employ1">{{ job.jobName }}</div>
+                        <div class="date">{{ job.date }}</div>
+                        <div class="position">{{ job.position }}</div><br>
+                    </div>
+                   {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if courses %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Courses</h3><hr>
+                    <ul class="list2">
+                       {% for cour in courses %}
+                           <li>{{ cour }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if skills %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Skills</h3><hr>
+                    <ul class="list2">
+                       {% for skill in skills %}
+                           <li>{{ skill }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if language %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Languages</h3><hr>
+                    <ul class="list2">
+                       {% for lan in language %}
+                           <li>{{ lan }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if hobby %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Hobbies</h3><hr>
+                    <ul class="list2">
+                       {% for hobby in hobby %}
+                           <li>{{ hobby }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if quality %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Qualities</h3><hr>
+                    <ul class="list2">
+                       {% for quality in quality %}
+                           <li>{{ quality }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if achievement %}
+            <div class="profile">
+              <h3 class="h2profile"> Achievement</h3><hr>
+
+                        <ul class="list2">
+                          {% for achiev in achievement %}
+                           <li>{{ achiev }}</li>
+                           {% endfor %}
+                        </ul>
+
+            </div><br>
+            {% endif %}
+
+            {% if custom %}
+             {% for section in custom %}
+             <div class="profile">
+               <h3 class="h2profile">{{ section.title }}</h3><hr>
+                 <div class="extra">
+                     {% for item in section["items"] %}
+                     <div class="custom-title">{{ item.title }}</div>
+                         <div class="custom-desc">{{ item.description }}</div><br>
+                     {% endfor %}
+                 </div>
+             </div>
+             {% endfor %}
+             {% endif %}
+     </div>
+
+     <footer class="footer">
+        <div class="social">
+               {% if github %}
+                  <a href="{{ github }}" target="_blank">
+                      <i class="fa-brands fa-github"></i>
+                       </a>
+                 {% endif %}
+
+               {% if facebook %}
+                   <a href="{{ facebook }}" target="_blank">
+                       <i class="fa-brands fa-facebook"></i>
+                         </a>
+               {% endif %}
+
+               {% if linkedin %}
+                    <a href="{{ linkedin }}" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+               {% endif %}
+
+        </div>
+      </footer>
+  </div>
+</body>
+</html>

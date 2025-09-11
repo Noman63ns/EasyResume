@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='resume5.css')}}">
+</head>
+<body>
+<div class="container" style="background-color: {{ container1_color }}; font-size: {{ font_size }};">
+
+    <header>
+        {% if photo_path %}
+                 <div class="profile-image">
+                     <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Photo"  >
+                  </div>
+        {% endif %}
+        <div class="header-bio">
+          <h1>{{name}}</h1>
+          <h3>{{designation}}</h3>
+        </div>
+        <div class="header-contact">
+             <p><a href="https://{{email}}">Email: {{email}}</a></p>
+             <p><a href="{{address}}">Address: {{address}}</a></p>
+             <p><a href="{{phone}}">Phone:{{phone}}</a></p>
+        </div>
+    </header>
+    <hr class="header-line"><br>
+
+    <main>
+        <!-- Personal Information -->
+        <section id="personal-section">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Personal Information</h3>
+                </div>
+                <div class="right-div">
+                    <p>
+                    {{profile}}
+                    </p><br>
+                </div>
+            </div>
+        </section>
+
+        <hr class="header-line2"><br>
+        {% if education %}
+        <!-- Education -->
+        <section id="education">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Educational Qualification</h3>
+                </div>
+                <div class="right-div">
+                        {% for edu in education %}
+                         <div class="edu-header">
+                               <div>
+                               <h3 class="degree">{{edu.degreeName}}</h3></div>
+                               <div><h5 class="time">{{edu.dateedu}}</h5><br></div>
+                               <div class="institute"><h5 >{{edu.instituteName}}</h5></div><br>
+                               <h5 class="department">{{edu.department}}</h5>
+                               <h5 class="result">CGPA/GPA:{{edu.result}}</h5><br>
+                         </div>
+                        {% endfor %}
+                </div>
+            </div>
+        <hr class="header-line3"><br>
+        </section>
+        {% endif %}
+
+        {% if skills %}
+        <!-- Skills -->
+        <section id="skills">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Skills</h3>
+                </div>
+                <div class="right-div">
+                     <ul>
+                           {% for skill in skills %}
+                           <li>{{ skill }}</li>
+                           {% endfor %}
+                     </ul>
+                </div>
+            </div>
+            <hr class="header-line3"><br>
+        </section>
+        {% endif %}
+        {% if internship %}
+        <section id="internship">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Internship</h3>
+                </div>
+                <div class="right-div">
+                       {% for intern in internship %}
+                           <p>{{ intern }}</p><br>
+                       {% endfor %}
+                </div>
+            </div>
+            <hr><br>
+        </section>
+        {% endif %}
+
+        {% if extra %}
+        <section id="extra">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Extra Curricular Activities</h3>
+                </div>
+                <div class="right-div">
+                     <ul>
+                           {% for extra in extra %}
+                           <li>{{ extra }}</li>
+                           {% endfor %}
+                     </ul>
+                </div>
+            </div>
+            <hr><br>
+        </section>
+        {% endif %}
+
+        {% if research %}
+        <section id="research">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Research Work</h3>
+                </div>
+                <div class="right-div">
+                       {% for research in research %}
+                           <p>{{ research }}</p><br>
+                       {% endfor %}
+                </div>
+            </div>
+            <hr><br>
+        </section>
+        {% endif %}
+
+        {% if employment %}
+         <section id="employment">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Employment</h3>
+                </div>
+                <div class="right-div">
+                   {% for job in employment %}
+                    <div class="job">
+                        <div class="employ1"><h5>{{ job.jobName }}</h5></div>
+                        <div class="date_em"><h5>{{ job.date }}</h5></div><br>
+                        <div class="position_"><p>{{ job.position }}</p><br></div>
+                    </div>
+                   {% endfor %}
+                </div>
+            </div>
+             <hr class='header line2'><br>
+         </section>
+         {% endif %}
+
+         {% if courses %}
+          <section id="courses">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Courses</h3>
+                </div>
+                <div class="right-div">
+                       {% for cour in courses %}
+                           <p>{{ cour }}</p><br>
+                       {% endfor %}
+                </div>
+            </div>
+              <hr class="header-line7"><br>
+          </section>
+          {% endif %}
+
+         {% if quality %}
+          <section id="qualities">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Qualities</h3>
+                </div>
+                <div class="right-div">
+                    <ul class="list2">
+                       {% for quality in quality %}
+                           <li>{{ quality }}</li>
+                       {% endfor %}
+                    </ul>
+                </div>
+            </div>
+              <hr class="header-line7"><br>
+          </section>
+          {% endif %}
+
+         {% if achievement %}
+          <section id="achievement">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Achievement</h3>
+                </div>
+                <div class="right-div">
+                    <div>
+                       {% for achiev in achievement %}
+                           <p>{{ achiev }}</p><br>
+                       {% endfor %}
+                    </div>
+                </div>
+            </div>
+              <hr><br>
+          </section>
+          {% endif %}
+          {% if hobby %}
+          <section id="hobby">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Hobbies</h3>
+                </div>
+                <div class="right-div">
+                    <div>
+                        <ul>
+                           {% for hobby in hobby %}
+                           <li>{{ hobby }}</li>
+                            {% endfor %}
+                         </ul>
+                    </div>
+                </div>
+            </div>
+              <hr><br>
+          </section>
+          {% endif %}
+          {% if language %}
+          <section id="language">
+            <div class="content">
+                <div class="left-div">
+                    <h3>Languages</h3>
+                </div>
+                <div class="right-div">
+                    <div>
+                        <ul>
+                       {% for lan in language %}
+                           <li>{{ lan }}</li>
+                       {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+              <hr><br>
+          </section>
+          {% endif %}
+          {% if custom %}
+          {% for section in custom %}
+          <div class="content">
+              <div class="left-div">
+                  <h3>{{ section.title }}</h3>
+              </div>
+             <div class="right-div">
+              {% for item in section["items"] %}
+                 <div class="custom-title"><h5>{{ item.title }}</h5></div>
+                  <div class="custom-desc"><p>{{ item.description }}</p><br></div>
+              {% endfor %}
+              </div>
+
+          </div>
+           <hr><br>
+          {% endfor %}
+         {% endif %}
+
+    </main>
+
+    <footer class="bottom-container">
+        <div class="social">
+               {% if github %}
+                  <a href="{{ github }}" target="_blank">
+                      <i class="fa-brands fa-github"></i>
+                       </a>
+                 {% endif %}
+
+               {% if facebook %}
+                   <a href="{{ facebook }}" target="_blank">
+                       <i class="fa-brands fa-facebook"></i>
+                         </a>
+               {% endif %}
+
+               {% if linkedin %}
+                    <a href="{{ linkedin }}" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+               {% endif %}
+
+        </div>
+    </footer>
+</div>
+</body>
+</html>

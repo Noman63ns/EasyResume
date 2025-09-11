@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Resume Template</title>
+  <style>
+    .card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: block;
+  width: 180px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card p {
+  padding: 10px;
+  font-weight: bold;
+  background: #f8f9fa;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+  </style>
+</head>
+<body>
+  <h2>Select a Resume Template</h2>
+  <div class="card-container">
+    <a href="/form/resume1" class="card">
+        <img src="{{ url_for('static', filename='images/resume_builder1.jpg') }}" alt="Template 1">
+        <p>Template 1</p>
+    </a>
+    <a href="/form/resume2" class="card">
+        <img src="{{ url_for('static', filename='images/resume_builder2.jpg') }}" alt="Template 2">
+        <p>Template 2</p>
+    </a>
+    <a href="/form/resume3" class="card">
+        <img src="{{ url_for('static', filename='images/resume_builder3.jpg') }}" alt="Template 3">
+        <p>Template 3</p>
+    </a>
+    <a href="/form/resume4" class="card">
+        <img src="{{ url_for('static', filename='images/resume_builder4.jpg') }}" alt="Template 4">
+        <p>Template 4</p>
+    </a>
+    <a href="/form/resume5" class="card">
+        <img src="{{ url_for('static', filename='images/resume_builder5.jpg') }}" alt="Template 5">
+        <p>Template 5</p>
+    </a>
+</div>
+
+</body>
+</html>

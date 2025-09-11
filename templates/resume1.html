@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <link rel="stylesheet" href="../static/resume1.css">
+</head>
+<body>
+
+<div class="container" style="font-size: {{ font_size }};">
+    <div class="container1" style="background: {{ container1_color }};">
+        <header>
+
+              {% if photo_path %}
+                 <div class="profile-image">
+                     <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Photo"  >
+                  </div>
+              {% endif %}
+
+              <div class="header-bio">
+                  <h2>{{name}}</h2>
+                  <h3>{{designation}}</h3>
+              </div><br>
+              <div>
+                   <h2 style="text-align: center;">Personal details</h2>
+                   <hr><br>
+                   <div class="bio">
+                        <p>&#128100 {{name}}</p>
+                        <p>&#128386 {{email}}</p>
+                        <p>&#128382 {{phone }}</p>
+                        <p>&#127968 {{address}}</p>
+                        <p>&#x1F4C5 {{dob}}</p>
+                        <p>&#9893 {{gender}}</p>
+                        <p>&#x1F3F4 {{nationality}}</p>
+                    </div>
+              </div><br><br>
+              <div>
+                   <h2 style="text-align: center;">Skills</h2>
+                   <hr><br>
+                   <ul class="list">
+                        {% for skill in skills %}
+                              <li>{{ skill }}</li>
+                        {% endfor %}
+                   </ul>
+             </div><br><br>
+              <div>
+                   <h2 style="text-align: center;">Lanuages</h2>
+                   <hr><br>
+                   <ul class="list">
+                       {% for langu in language  %}
+                              <li>{{ langu }}</li>
+                       {% endfor %}
+                   </ul>
+             </div><br><br>
+              <div>
+                   <h2 style="text-align: center;">Hobbies</h2>
+                   <hr ><br>
+                   <ul class= "list">
+                       {% for hobby in hobbies  %}
+                              <li>{{ hobby }}</li>
+                        {% endfor %}
+                   </ul>
+              </div>
+        </header>
+    </div>
+    <div class="container2" >
+         <div class="profile">
+              <h2 class="h2profile"> Profile</h2>
+              <p> {{profile}}</p>
+         </div>
+         {% if education %}
+          <hr class='header line2'><br>
+          <div class="profile">
+             <h2 class="h2profile"> Education</h2>
+             <div class="extra">
+                 {% for degree in education %}
+                 <div class="degree">
+                     <div class="degreeName">{{ degree.degreeName }}</div>
+                     <div class="date">{{ degree.dateedu }}</div>
+                     <div class="instituteName">{{ degree.instituteName }}</div>
+                     <div class="department">{{ degree.department }}</div>
+                     <div class="result"><p>CGPA/GPA:{{ degree.result }}</P></div>
+                 </div> <br>
+                 {% endfor %}
+             </div>
+          </div>
+          {% endif %}
+         {% if internship %}
+          <hr class='header line2'><br>
+          <div class="profile">
+                   <h2 class="h2profile"> Internship</h2>
+                    <div>
+                       {% for intern in internship %}
+                           <p>{{ intern }}</p>
+                       {% endfor %}
+                    </div>
+          </div>
+          {% endif %}
+         {% if extra  %}
+          <hr class='header line2'><br>
+          <div class="profile">
+
+                   <h2 class="h2profile"> Extra Curricular Activities</h2>
+                    <ul class="list2">
+                       {% for extra in extra  %}
+                           <li>{{ extra }}</li>
+                       {% endfor %}
+                    </ul>
+          </div>
+          {% endif %}
+         {% if research %}
+          <hr class='header line2'><br>
+          <div class="profile">
+              <h2 class="h2profile"> Research Work</h2>
+                    <div>
+                       {% for research in research %}
+                           <p>{{ research }}</p><br>
+                       {% endfor %}
+                    </div>
+          </div>
+          {% endif %}
+          {% if employment %}
+          <hr class='header line2'><br>
+            <div class="profile">
+                <h2 class="h2profile">Employment</h2>
+                <div class="extra">
+                   {% for job in employment %}
+                    <div class="job">
+                        <div class="employ1">{{ job.jobName }}</div>
+                        <div class="date_em">{{ job.date }}</div><br>
+                        <div class="position_">{{ job.position }}</div>
+                    </div> <br>
+                   {% endfor %}
+                </div><br>
+            </div>
+         {% endif %}
+          {% if courses %}
+          <hr class='header line2'><br>
+          <div class="profile">
+
+                   <h2 class="h2profile"> Courses</h2>
+                    <ul class="list2">
+                       {% for cour in courses %}
+                           <li>{{ cour }}</li>
+                       {% endfor %}
+                    </ul>
+          </div>
+          {% endif %}
+         {% if quality %}
+          <hr class='header line2'><br>
+          <div class="profile">
+
+                   <h2 class="h2profile"> Qualities</h2>
+                    <ul class="list2">
+                       {% for quality in quality %}
+                           <li>{{ quality }}</li>
+                       {% endfor %}
+                    </ul>
+          </div>
+          {% endif %}
+         {% if achievement %}
+          <hr class='header line2'><br>
+          <div class="profile">
+              <h2 class="h2profile"> Achievement</h2>
+                    <div>
+                       {% for achiev in achievement %}
+                           <p>{{ achiev }}</p>
+                       {% endfor %}
+                    </div>
+          </div>
+          {% endif %}
+
+          {% if custom %}
+          {% for section in custom %}
+          <div class="profile">
+              <hr class='header line2'><br>
+          <h2 class="h2profile">{{ section.title }}</h2>
+             <div class="extra">
+              {% for item in section["items"] %}
+                 <div class="custom-title">{{ item.title }}</div>
+                  <div class="custom-desc">{{ item.description }}</div>
+              {% endfor %}
+              </div>
+          </div>
+         {% endfor %}
+         {% endif %}
+
+    </div>
+</div>
+</body>
+</html>
+
