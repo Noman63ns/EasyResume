@@ -1,70 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Select Resume Template</title>
   <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
     .card-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
 
-.card {
-  display: block;
-  width: 180px;
-  text-align: center;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease;
-  text-decoration: none;
-  color: #333;
-}
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+      width: 200px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
 
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
 
-.card p {
-  padding: 10px;
-  font-weight: bold;
-  background: #f8f9fa;
-}
+    .card p {
+      font-weight: bold;
+      margin: 0;
+      padding: 10px;
+      background: #f1f3f5;
+      flex-grow: 1;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+    }
 
+    .card-buttons {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      background: #f8f9fa;
+      gap: 10px;
+    }
+
+    .card-buttons a {
+      text-decoration: none;
+      background-color: #007bff;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      flex: 1;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .card-buttons a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .card-container {
+        gap: 15px;
+      }
+
+      .card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+
+      .card-buttons a {
+        font-size: 1rem;
+        padding: 10px 0;
+      }
+    }
   </style>
 </head>
 <body>
+
   <h2>Select a Resume Template</h2>
+
   <div class="card-container">
-    <a href="/form/resume1" class="card">
-        <img src="{{ url_for('static', filename='images/resume_builder1.jpg') }}" alt="Template 1">
-        <p>Template 1</p>
-    </a>
-    <a href="/form/resume2" class="card">
-        <img src="{{ url_for('static', filename='images/resume_builder2.jpg') }}" alt="Template 2">
-        <p>Template 2</p>
-    </a>
-    <a href="/form/resume3" class="card">
-        <img src="{{ url_for('static', filename='images/resume_builder3.jpg') }}" alt="Template 3">
-        <p>Template 3</p>
-    </a>
-    <a href="/form/resume4" class="card">
-        <img src="{{ url_for('static', filename='images/resume_builder4.jpg') }}" alt="Template 4">
-        <p>Template 4</p>
-    </a>
-    <a href="/form/resume5" class="card">
-        <img src="{{ url_for('static', filename='images/resume_builder5.jpg') }}" alt="Template 5">
-        <p>Template 5</p>
-    </a>
-</div>
+    <!-- Template 1 -->
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/resume_builder1.jpg') }}" alt="Template 1">
+      <p>Template 1</p>
+      <div class="card-buttons">
+        <a href="/form/resume1">Use</a>
+        <a href="{{ url_for('static', filename='resume1.pdf') }}" target="_blank">Preview PDF</a>
+      </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/resume_builder2.jpg') }}" alt="Template 2">
+      <p>Template 2</p>
+      <div class="card-buttons">
+        <a href="/form/resume2">Use</a>
+        <a href="{{ url_for('static', filename='resume2.pdf') }}" target="_blank">Preview PDF</a>
+      </div>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/resume_builder3.jpg') }}" alt="Template 3">
+      <p>Template 3</p>
+      <div class="card-buttons">
+        <a href="/form/resume3">Use</a>
+        <a href="{{ url_for('static', filename='resume3.pdf') }}" target="_blank">Preview PDF</a>
+      </div>
+    </div>
+
+    <!-- Template 4 -->
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/resume_builder4.jpg') }}" alt="Template 4">
+      <p>Template 4</p>
+      <div class="card-buttons">
+        <a href="/form/resume4">Use</a>
+        <a href="{{ url_for('static', filename='resume4.pdf') }}" target="_blank">Preview PDF</a>
+      </div>
+    </div>
+
+    <!-- Template 5 -->
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/resume_builder5.jpg') }}" alt="Template 5">
+      <p>Template 5</p>
+      <div class="card-buttons">
+        <a href="/form/resume5">Use</a>
+        <a href="{{ url_for('static', filename='resume5.pdf') }}" target="_blank">Preview PDF</a>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 </html>
