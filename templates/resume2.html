@@ -20,9 +20,15 @@
         </div>
         <div class="header-contact">
              <p><a href="mailto:{{email}}">Email: {{email}}</a></p>
+             {% if facebook %}
              <p><a href="{{facebook}}">Facebook: {{facebook}}</a></p>
+             {% endif %}
+             {% if linkedin %}
              <p><a href="{{linkdin}}">Linkedin: {{linkedin}}</a></p>
+             {% endif %}
+             {% if github %}
              <p><a href="{{github}}">Github: {{github}}</a></p>
+             {% endif %}
              <p><a href="tel:{{phone}}">Phone: {{phone}}</a></p>
              <p style="color: black;">Address:{{address}}</p>
              <p style="color: black;">Date of Birth:{{dob}}</p>
@@ -142,6 +148,39 @@
              </div>
              {% endfor %}
              {% endif %}
+             {% if skills %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Skills</h3>
+                    <ul class="list2">
+                       {% for skill in skills %}
+                           <li>{{ skill }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if language %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Languages</h3>
+                    <ul class="list2">
+                       {% for lan in language %}
+                           <li>{{ lan }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
+            {% if hobby %}
+            <div class="profile">
+
+                   <h3 class="h2profile"> Hobbies</h3>
+                    <ul class="list2">
+                       {% for hobby in hobby %}
+                           <li>{{ hobby }}</li>
+                       {% endfor %}
+                    </ul>
+            </div><br>
+            {% endif %}
     </div>
   </div>
 </body>
