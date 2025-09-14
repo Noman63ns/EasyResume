@@ -40,3 +40,21 @@ body{
 .g{display:block;margin:20px;width:500px}
 .n{display:block;margin:20px;width:500px}
 
+textarea {
+  width: 100%;              /* makes it fill the container */
+  max-width: 100%;          /* prevents overflow */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;   /* include padding inside width */
+}
+
+/* Optional: adjust spacing for small screens */
+@media (max-width: 480px) {
+  textarea {
+    font-size: 0.95rem;
+  }
+}
+
+
