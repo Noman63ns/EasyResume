@@ -2,168 +2,375 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Select Resume Template</title>
+  <title>Resume Templates - Night Ocean</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
       margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Background */
+    .sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(to top, #0d1b2a, #000);
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .ocean {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to bottom, #00111a, #000814);
+      z-index: 0;
+    }
+
+    .moon {
+      position: absolute;
+      top: 50px;
+      right: 100px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #e0e0e0, #888);
+      border-radius: 50%;
+      opacity: 0.7;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite ease-in-out, moveStars 60s linear infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes moveStars {
+      from { transform: translateX(0); }
+      to { transform: translateX(-2000px); }
+    }
+
+    /* Foreground Content */
+    .main-container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      height: 85%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+
+    .sidebar ul li button {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      text-align: left;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar ul li button:hover,
+    .sidebar ul li button.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Template Content */
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       padding: 20px;
     }
 
-    h2 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 30px;
-      font-size: 2rem;
+    .template-view {
+      display: flex;
+      gap: 40px;
+      max-width: 900px;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.8s ease;
+      position: absolute;
     }
 
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
+    .template-view.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+    }
+
+    .template-card {
+      flex: 1;
+      max-width: 350px;
+      perspective: 1000px;
     }
 
     .card {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 15px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.4);
       overflow: hidden;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-      width: 200px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
+      transform: rotateY(-10deg) rotateX(5deg);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .card:hover {
+      transform: rotateY(0) rotateX(0) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
 
     .card img {
       width: 100%;
-      height: 220px;
+      height: 400px;
       object-fit: cover;
     }
 
-    .card p {
-      font-weight: bold;
-      margin: 0;
-      padding: 10px;
-      background: #f1f3f5;
-      flex-grow: 1;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-    }
-
-    .card-buttons {
-      display: flex;
-      justify-content: space-around;
-      padding: 10px;
-      background: #f8f9fa;
-      gap: 10px;
-    }
-
-    .card-buttons a {
-      text-decoration: none;
-      background-color: #007bff;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
+    .template-details {
       flex: 1;
-      text-align: center;
-      transition: background 0.3s;
+      color: #fff;
     }
 
-    .card-buttons a:hover {
-      background-color: #0056b3;
+    .template-details h2 {
+      font-size: 1.8rem;
+      color: #00d4ff;
+      margin-bottom: 15px;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .card-container {
-        gap: 15px;
-      }
-
-      .card {
-        width: 45%;
-      }
+    .template-details p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
-    @media (max-width: 480px) {
-      .card-container {
+    .template-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .template-buttons a {
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      color: #fff;
+    }
+
+    .use-btn {
+      background: #28a745;
+    }
+
+    .use-btn:hover {
+      background: #1e7e34;
+    }
+
+    .preview-btn {
+      background: #007bff;
+    }
+
+    .preview-btn:hover {
+      background: #0056b3;
+    }
+       @media (max-width: 1024px) {
+      .container {
         flex-direction: column;
-        align-items: center;
       }
-
-      .card {
-        width: 90%;
-      }
-
-      .card-buttons a {
-        font-size: 1rem;
-        padding: 10px 0;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <h2>Select a Resume Template</h2>
-
-  <div class="card-container">
-    <!-- Template 1 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/resume_builder1.jpg') }}" alt="Template 1">
-      <p>Template 1</p>
-      <div class="card-buttons">
-        <a href="/form/resume1">Use</a>
-        <a href="{{ url_for('static', filename='resume1.pdf') }}" target="_blank">Preview PDF</a>
-      </div>
-    </div>
-
-    <!-- Template 2 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/resume_builder2.jpg') }}" alt="Template 2">
-      <p>Template 2</p>
-      <div class="card-buttons">
-        <a href="/form/resume2">Use</a>
-        <a href="{{ url_for('static', filename='resume2.pdf') }}" target="_blank">Preview PDF</a>
-      </div>
-    </div>
-
-    <!-- Template 3 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/resume_builder3.jpg') }}" alt="Template 3">
-      <p>Template 3</p>
-      <div class="card-buttons">
-        <a href="/form/resume3">Use</a>
-        <a href="{{ url_for('static', filename='resume3.pdf') }}" target="_blank">Preview PDF</a>
-      </div>
-    </div>
-
-    <!-- Template 4 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/resume_builder4.jpg') }}" alt="Template 4">
-      <p>Template 4</p>
-      <div class="card-buttons">
-        <a href="/form/resume4">Use</a>
-        <a href="{{ url_for('static', filename='resume4.pdf') }}" target="_blank">Preview PDF</a>
-      </div>
-    </div>
-
-    <!-- Template 5 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/resume_builder5.jpg') }}" alt="Template 5">
-      <p>Template 5</p>
-      <div class="card-buttons">
-        <a href="/form/resume5">Use</a>
-        <a href="{{ url_for('static', filename='resume5.pdf') }}" target="_blank">Preview PDF</a>
-      </div>
-    </div>
-
+  <!-- Background -->
+  <div class="sky">
+    <div class="moon"></div>
+    <script>
+      for (let i = 0; i < 800; i++) {
+        const star = document.createElement('div');
+        const size = Math.random() * 3 + 1 + "px";
+        star.className = "star";
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = Math.random() * 70 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDelay = (Math.random() * 5) + "s";
+        document.querySelector(".sky").appendChild(star);
+      }
+    </script>
   </div>
+  <div class="ocean"></div>
+
+  <!-- Foreground Container -->
+  <div class="main-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Templates</h3>
+      <ul>
+        <li><button class="active" onclick="showTemplate(0)">Template 1</button></li>
+        <li><button onclick="showTemplate(1)">Template 2</button></li>
+        <li><button onclick="showTemplate(2)">Template 3</button></li>
+        <li><button onclick="showTemplate(3)">Template 4</button></li>
+        <li><button onclick="showTemplate(4)">Template 5</button></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+      <!-- Template 1 -->
+      <div class="template-view active">
+        <div class="template-card">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/resume_builder1.jpg') }}" alt="Template 1">
+          </div>
+        </div>
+        <div class="template-details">
+          <h2>Template 1</h2>
+          <p>A clean and modern resume design perfect for freshers and professionals who want a simple but effective layout.</p>
+          <div class="template-buttons">
+            <a href="/form/resume1" class="use-btn">Use</a>
+            <a href="{{ url_for('static', filename='resume1.pdf') }}" target="_blank" class="preview-btn">Preview</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Template 2 -->
+
+        <div class="template-view">
+        <div class="template-card">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/resume_builder2.jpg') }}" alt="Template 2">
+          </div>
+        </div>
+        <div class="template-details">
+          <h2>Template 2</h2>
+          <p>A stylish and colorful resume layout that makes your application stand out in creative industries.</p>
+          <div class="template-buttons">
+            <a href="/form/resume2" class="use-btn">Use</a>
+            <a href="{{ url_for('static', filename='resume2.pdf') }}" target="_blank" class="preview-btn">Preview</a>
+          </div>
+        </div>
+      </div>
+
+        <div class="template-view">
+        <div class="template-card">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/resume_builder3.jpg') }}" alt="Template 3">
+          </div>
+        </div>
+        <div class="template-details">
+          <h2>Template 3</h2>
+          <p>A stylish and colorful resume layout that makes your application stand out in creative industries.</p>
+          <div class="template-buttons">
+            <a href="/form/resume3" class="use-btn">Use</a>
+            <a href="{{ url_for('static', filename='resume3.pdf') }}" target="_blank" class="preview-btn">Preview</a>
+          </div>
+        </div>
+      </div>
+
+        <div class="template-view">
+        <div class="template-card">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/resume_builder4.jpg') }}" alt="Template 4">
+          </div>
+        </div>
+        <div class="template-details">
+          <h2>Template 4</h2>
+          <p>A stylish and colorful resume layout that makes your application stand out in creative industries.</p>
+          <div class="template-buttons">
+            <a href="/form/resume4" class="use-btn">Use</a>
+            <a href="{{ url_for('static', filename='resume4.pdf') }}" target="_blank" class="preview-btn">Preview</a>
+          </div>
+        </div>
+      </div>
+
+        <div class="template-view">
+        <div class="template-card">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/resume_builder5.jpg') }}" alt="Template 5">
+          </div>
+        </div>
+        <div class="template-details">
+          <h2>Template 5</h2>
+          <p>A stylish and colorful resume layout that makes your application stand out in creative industries.</p>
+          <div class="template-buttons">
+            <a href="/form/resume5" class="use-btn">Use</a>
+            <a href="{{ url_for('static', filename='resume5.pdf') }}" target="_blank" class="preview-btn">Preview</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more templates (3–5) as needed -->
+
+    </div>
+  </div>
+
+  <script>
+    const views = document.querySelectorAll('.template-view');
+    const buttons = document.querySelectorAll('.sidebar ul li button');
+
+    function showTemplate(index) {
+      views.forEach((view, i) => {
+        view.classList.remove('active');
+        buttons[i].classList.remove('active');
+        if (i === index) {
+          view.classList.add('active');
+          buttons[i].classList.add('active');
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
