@@ -161,6 +161,35 @@ display:block;
   font-size: 13px;
   margin-top: 5px;
 }
+@page {
+  page:A4;
+  margin: 0;
+}
+
+@media print {
+    body {
+      margin: 0;
+      width: 21.5cm;  /* A4 width */
+      height: 30cm; /* A4 height */
+      box-sizing: border-box;
+    }
+
+    /* Remove unnecessary UI parts */
+    .no-print {
+      display: none !important;
+    }
+
+    /* Prevent elements from breaking across pages */
+    .page-break {
+      page-break-before: always;
+    }
+  }
+@media print {
+  html, body, .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
 
 
 
