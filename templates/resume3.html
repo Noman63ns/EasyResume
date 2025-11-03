@@ -132,12 +132,12 @@
                     </ul>
             </div><br>
             {% endif %}
-            {% if hobby %}
+            {% if hobbies %}
             <div class="profile">
 
                    <h3 class="h2profile"> Hobbies</h3><hr>
                     <ul class="list2">
-                       {% for hobby in hobby %}
+                       {% for hobby in hobbies %}
                            <li>{{ hobby }}</li>
                        {% endfor %}
                     </ul>
@@ -173,7 +173,7 @@
                <h3 class="h2profile">{{ section.title }}</h3><hr>
                  <div class="extra">
                      {% for item in section["items"] %}
-                     <div class="custom-title">{{ item.title }}</div>
+                     <div class="custom-title"><h5>{{ item.title }}</h5></div>
                          <div class="custom-desc">{{ item.description }}</div><br>
                      {% endfor %}
                  </div>
