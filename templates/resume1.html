@@ -22,7 +22,7 @@
                   <h3>{{designation}}</h3>
               </div><br>
               <div>
-                   <h2 style="text-align: center;">Personal details</h2>
+                   <h3 style="text-align: center;">Personal details</h3>
                    <hr><br>
                    <div class="bio">
                         <p>&#128100 {{name}}</p>
@@ -35,7 +35,7 @@
                     </div>
               </div><br><br>
               <div>
-                   <h2 style="text-align: center;">Skills</h2>
+                   <h3 style="text-align: center;">Skills</h3>
                    <hr><br>
                    <ul class="list">
                         {% for skill in skills %}
@@ -44,7 +44,7 @@
                    </ul>
              </div><br><br>
               <div>
-                   <h2 style="text-align: center;">Lanuages</h2>
+                   <h3 style="text-align: center;">Lanuages</h3>
                    <hr><br>
                    <ul class="list">
                        {% for langu in language  %}
@@ -53,7 +53,7 @@
                    </ul>
              </div><br><br>
               <div>
-                   <h2 style="text-align: center;">Hobbies</h2>
+                   <h3 style="text-align: center;">Hobbies</h3>
                    <hr ><br>
                    <ul class= "list">
                        {% for hobby in hobbies  %}
@@ -65,13 +65,13 @@
     </div>
     <div class="container2" >
          <div class="profile">
-              <h2 class="h2profile"> Profile</h2>
+              <h3 class="h2profile"> Profile</h3>
               <p> {{profile}}</p>
          </div>
          {% if education %}
           <hr class='header line2'><br>
           <div class="profile">
-             <h2 class="h2profile"> Education</h2>
+             <h3 class="h2profile"> Education</h3>
              <div class="extra">
                  {% for degree in education %}
                  <div class="degree">
@@ -79,7 +79,7 @@
                      <div class="date">{{ degree.dateedu }}</div>
                      <div class="instituteName">{{ degree.instituteName }}</div>
                      <div class="department">{{ degree.department }}</div>
-                     <div class="result"><p>CGPA/GPA:{{ degree.result }}</P></div>
+                     <div class="result"><h5>CGPA/GPA:{{ degree.result }}</h5></div>
                  </div> <br>
                  {% endfor %}
              </div>
@@ -88,10 +88,11 @@
          {% if internship %}
           <hr class='header line2'><br>
           <div class="profile">
-                   <h2 class="h2profile"> Internship</h2>
+                   <h3 class="h2profile"> Internship</h3>
                     <div>
                        {% for intern in internship %}
-                           <p>{{ intern }}</p>
+                           <h5>{{ intern.internInput }}</h5>
+                           <p>{{intern.internTitle}}</p><br>
                        {% endfor %}
                     </div>
           </div>
@@ -100,7 +101,7 @@
           <hr class='header line2'><br>
           <div class="profile">
 
-                   <h2 class="h2profile"> Extra Curricular Activities</h2>
+                   <h3 class="h2profile"> Extra Curricular Activities</h3>
                     <ul class="list2">
                        {% for extra in extra  %}
                            <li>{{ extra }}</li>
@@ -111,10 +112,11 @@
          {% if research %}
           <hr class='header line2'><br>
           <div class="profile">
-              <h2 class="h2profile"> Research Work</h2>
+              <h3 class="h2profile"> Research Work</h3>
                     <div>
                        {% for research in research %}
-                           <p>{{ research }}</p><br>
+                           <h5>{{ research.researchInput }}</h5>
+                           <p>{{research.researchTitle}}</p><br>
                        {% endfor %}
                     </div>
           </div>
@@ -138,10 +140,11 @@
           <hr class='header line2'><br>
           <div class="profile">
 
-                   <h2 class="h2profile"> Courses</h2>
+                   <h3 class="h2profile"> Courses</h3>
                     <ul class="list2">
                        {% for cour in courses %}
-                           <li>{{ cour }}</li>
+                           <h5>{{ cour.courInput }}</h5>
+                               <p>{{ cour.courTitle }}</p><br>
                        {% endfor %}
                     </ul>
           </div>
@@ -150,7 +153,7 @@
           <hr class='header line2'><br>
           <div class="profile">
 
-                   <h2 class="h2profile"> Qualities</h2>
+                   <h3 class="h2profile"> Qualities</h3>
                     <ul class="list2">
                        {% for quality in quality %}
                            <li>{{ quality }}</li>
@@ -161,10 +164,11 @@
          {% if achievement %}
           <hr class='header line2'><br>
           <div class="profile">
-              <h2 class="h2profile"> Achievement</h2>
+              <h3 class="h2profile"> Achievement</h3>
                     <div>
                        {% for achiev in achievement %}
-                           <p>{{ achiev }}</p>
+                           <h5>{{ achiev.achieveInput }}</h5>
+                           <p>{{achiev.achieveTitle}}</p><br>
                        {% endfor %}
                     </div>
           </div>
@@ -174,11 +178,11 @@
           {% for section in custom %}
           <div class="profile">
               <hr class='header line2'><br>
-          <h2 class="h2profile">{{ section.title }}</h2>
+          <h3 class="h2profile">{{ section.title }}</h3>
              <div class="extra">
               {% for item in section["items"] %}
-                 <div class="custom-title">{{ item.title }}</div>
-                  <div class="custom-desc">{{ item.description }}</div>
+                 <div class="custom-title"><h5>{{ item.title }}</h5></div>
+                  <div class="custom-desc">{{ item.description }}</div><br>
               {% endfor %}
               </div>
           </div>
