@@ -18,7 +18,7 @@ body {
   font-size: 11pt;   /* Word default small size */
   line-height: 1.4;
   max-width: 800px;
-  margin: 20px auto;
+  margin: 2px auto;
   border: 1px solid #ddd;
   background:#fff ;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -163,3 +163,33 @@ hr.header-line {
     text-align: center;
   }
   .footer{text-align: right}
+  @page {
+  page:A4;
+  margin: 0;
+}
+
+@media print {
+    body {
+      margin-left: 10px;
+      width: 21.5cm;  /* A4 width */
+      height: 30cm; /* A4 height */
+      box-sizing: border-box;
+    }
+
+    /* Remove unnecessary UI parts */
+    .no-print {
+      display: none !important;
+    }
+
+    /* Prevent elements from breaking across pages */
+    .page-break {
+      page-break-before: always;
+    }
+  }
+@media print {
+  html, body, .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
