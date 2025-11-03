@@ -54,12 +54,52 @@ def form(template_name):
         skills = split_list("skills")
         hobbies = split_list("hobbies")
         language = split_list("language")
-        internship = split_list("internship")
+        internship_raw = request.form.get("internship")
+        internship = []
+        if internship_raw:
+            intern = [e.strip() for e in internship_raw.split("||") if e.strip()]
+            for d in intern:
+                parts = [p.strip() for p in d.split("|")]
+                if len(parts) == 2:
+                    internship.append({
+                        "internInput": parts[0],
+                        "internTitle": parts[1],
+                    })
         extra = split_list("extra")
-        research = split_list("research")
+        research_raw = request.form.get("research")
+        research= []
+        if research_raw:
+            resear = [e.strip() for e in research_raw.split("||") if e.strip()]
+            for d in resear:
+                parts = [p.strip() for p in d.split("|")]
+                if len(parts) == 2:
+                    research.append({
+                        "researchInput": parts[0],
+                        "researchTitle": parts[1],
+                    })
         quality = split_list("quality")
-        achievement = split_list("achievement")
-        courses = split_list("courses")
+        achievement_raw = request.form.get("achievement")
+        achievement= []
+        if achievement_raw:
+            achieve = [e.strip() for e in achievement_raw.split("||") if e.strip()]
+            for d in achieve:
+                parts = [p.strip() for p in d.split("|")]
+                if len(parts) == 2:
+                    achievement.append({
+                        "achieveInput": parts[0],
+                        "achieveTitle": parts[1],
+                    })
+        courses_raw = request.form.get("courses")
+        courses= []
+        if courses_raw:
+            cour = [e.strip() for e in courses_raw.split("||") if e.strip()]
+            for d in cour:
+                parts = [p.strip() for p in d.split("|")]
+                if len(parts) == 2:
+                    courses.append({
+                        "courInput": parts[0],
+                        "courTitle": parts[1],
+                    })
 
         # ----- Employment -----
         employment_raw = request.form.get("employment")
