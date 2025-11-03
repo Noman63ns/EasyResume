@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Resume Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/form6.css">
   <style>
     .optional-section { display: none; margin-top: 10px; }
@@ -87,7 +88,8 @@
     <input type="hidden" name="hobbies" id="hobbyField"></div><br>
     </div>
     <label for="profile">Profile:</label><br>
-      <textarea id="profile" name="profile" rows="5" required></textarea><br>
+      <textarea id="profile" name="profile" rows="5" required></textarea>
+
 
     <!-- Optional Sections -->
     <h3>Optional Sections</h3>
@@ -125,19 +127,21 @@
     </label>
     <div id="internSection" class="optional-section">
       <input type="text" id="internInput" placeholder="Enter internship">
-      <button type="button" class="btn" onclick="addItem('internInput','internList','internField')">Add Internship</button>
+        <input type="text" id="internTitle" placeholder="Details">
+      <button type="button" class="btn" onclick="addItem(['internInput','internTitle'],'internList','internField')">Add Internship</button>
       <ul id="internList"></ul>
       <input type="hidden" name="internship" id="internField">
     </div><br>
 
     <label>
-      <input type="checkbox" id="chkAchiev" onchange="toggleSection('chkAchiev','achievSection')"> Achievement
+      <input type="checkbox" id="chkAchieve" onchange="toggleSection('chkAchieve','achieveSection')"> Achievement
     </label>
-    <div id="achievSection" class="optional-section">
-      <input type="text" id="achievInput" placeholder="Enter achievement">
-      <button type="button" class="btn" onclick="addItem('achievInput','achievList','achievField')">Add Achievement</button>
-      <ul id="achievList"></ul>
-      <input type="hidden" name="achievement" id="achievField">
+    <div id="achieveSection" class="optional-section">
+      <input type="text" id="achieveInput" placeholder="Enter achievement">
+        <input type="text" id="achieveTitle" placeholder="Details">
+      <button type="button" class="btn" onclick="addItem(['achieveInput','achieveTitle'],'achieveList','achieveField')">Add Achievement</button>
+      <ul id="achieveList"></ul>
+      <input type="hidden" name="achievement" id="achieveField">
     </div><br>
 
     <label>
@@ -145,7 +149,8 @@
     </label>
     <div id="coursesSection" class="optional-section">
       <input type="text" id="courInput" placeholder="Enter courses">
-      <button type="button" class="btn" onclick="addItem('courInput','courList','courField')">Add Courses</button>
+        <input type="text" id="courTitle" placeholder="Details">
+      <button type="button" class="btn" onclick="addItem(['courInput','courTitle'],'courList','courField')">Add Courses</button>
       <ul id="courList"></ul>
       <input type="hidden" name="courses" id="courField">
     </div><br>
@@ -173,7 +178,8 @@
     </label>
       <div id="researchSection" class="optional-section">
       <input type="text" id="researchInput" placeholder="Enter Research Work">
-      <button type="button" class="btn" onclick="addItem('researchInput','researchList','researchField')">Add Research Work</button>
+          <input type="text" id="researchTitle" placeholder="Details">
+      <button type="button" class="btn" onclick="addItem(['researchInput','researchTitle'],'researchList','researchField')">Add Research Work</button>
       <ul id="researchList"></ul>
       <input type="hidden" name="research" id="researchField">
       </div><br>
@@ -321,5 +327,4 @@ function renderCustomSections() {
 </div>
 </body>
 </html>
-
 
