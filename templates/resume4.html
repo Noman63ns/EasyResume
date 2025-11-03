@@ -90,7 +90,8 @@
                    <h2 class="h2profile"> Internship</h2>
                     <div>
                        {% for intern in internship %}
-                           <p>{{ intern }}</p>
+                           <h5>{{ internInput }}</h5>
+                        <p>{{ internTitle }}</p><br>
                        {% endfor %}
                     </div>
                </div>
@@ -113,7 +114,8 @@
                 <h2 class="h2profile"> Research Work</h2>
                     <div>
                        {% for research in research %}
-                           <p>{{ research }}</p><br>
+                          <h5>{{ researchInput }}</h5>
+                        <p>{{ researchTitle }}</p><br>
                        {% endfor %}
                     </div>
             </div>
@@ -163,7 +165,8 @@
               <h2 class="h2profile"> Achievement</h2>
                     <div>
                        {% for achiev in achievement %}
-                           <p>{{ achiev }}</p>
+                          <h5>{{ achieveInput }}</h5>
+                          <p>{{ achieveTitle }}</p><br>
                        {% endfor %}
                     </div>
             </div>
@@ -175,7 +178,7 @@
                <h2 class="h2profile">{{ section.title }}</h2>
                  <div class="extra">
                      {% for item in section["items"] %}
-                     <div class="custom-title">{{ item.title }}</div>
+                     <div class="custom-title"><h5>{{ item.title }}</h5></div>
                          <div class="custom-desc">{{ item.description }}</div>
                      {% endfor %}
                  </div>
