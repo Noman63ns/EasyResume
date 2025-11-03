@@ -62,7 +62,8 @@
                    <h2 class="h2profile"> Internship</h2>
                     <div>
                        {% for intern in internship %}
-                           <p>{{ intern }}</p><br>
+                           <h5>{{ intern.internInput }}</h5>
+                          <p>{{ intern.internTitle }}</p><br>
                        {% endfor %}
                     </div>
                </div>
@@ -83,7 +84,8 @@
                 <h2 class="h2profile"> Research Work</h2>
                     <div>
                        {% for research in research %}
-                           <p>{{ research }}</p><br>
+                           <h5>{{ research.researchInput }}</h5>
+                           <p>{{research.researchTitle}}</p><br>
                        {% endfor %}
                     </div>
             </div>
@@ -108,7 +110,8 @@
                    <h2 class="h2profile"> Courses</h2>
                     <ul class="list2">
                        {% for cour in courses %}
-                           <li>{{ cour }}</li>
+                           <li><h5>{{ cour.courInput }}</h5>
+                                <p>{{ cour.courTitle}}</p></li>
                        {% endfor %}
                     </ul>
             </div><br>
@@ -129,7 +132,8 @@
               <h2 class="h2profile"> Achievement</h2>
                     <div>
                        {% for achiev in achievement %}
-                           <p>{{ achiev }}</p>
+                           <h5>{{ achiev.achieveInput }}</h5>
+                           <p>{{ achiev.achieveTitle }}</p><br>
                        {% endfor %}
                     </div><br>
             </div>
@@ -141,7 +145,7 @@
                <h2 class="h2profile">{{ section.title }}</h2>
                  <div class="extra">
                      {% for item in section["items"] %}
-                     <div class="custom-title">{{ item.title }}</div>
+                     <div class="custom-title"><h5>{{ item.title }}</h5></div>
                          <div class="custom-desc">{{ item.description }}</div><br>
                      {% endfor %}
                  </div>
@@ -151,7 +155,7 @@
              {% if skills %}
             <div class="profile">
 
-                   <h3 class="h2profile"> Skills</h3>
+                   <h2 class="h2profile"> Skills</h2>
                     <ul class="list2">
                        {% for skill in skills %}
                            <li>{{ skill }}</li>
@@ -162,7 +166,7 @@
             {% if language %}
             <div class="profile">
 
-                   <h3 class="h2profile"> Languages</h3>
+                   <h2 class="h2profile"> Languages</h2>
                     <ul class="list2">
                        {% for lan in language %}
                            <li>{{ lan }}</li>
