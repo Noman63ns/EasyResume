@@ -40,6 +40,7 @@ body{
 .g{display:block;margin:20px;width:500px}
 .n{display:block;margin:20px;width:500px}
 
+
 textarea {
   width: 100%;              /* makes it fill the container */
   max-width: 100%;          /* prevents overflow */
@@ -56,5 +57,3 @@ textarea {
     font-size: 0.95rem;
   }
 }
-
-
